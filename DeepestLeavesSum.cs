@@ -17,7 +17,7 @@
 public class Solution {
     public int DeepestLeavesSum(TreeNode root) {
         int sum = 0; // answer
-        Dictionary<int, List<int>> deepLeaf = new Dictionary<int, List<int>>(); // dict of kvp, int and lsit
+        Dictionary<int, List<int>> deepLeaf = new Dictionary<int, List<int>>(); // dict of kvp, int and list
         
         // goes through tree, finding all leaves
         void findDeepNodes(TreeNode node, int layer){

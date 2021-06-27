@@ -37,11 +37,11 @@ public class Solution {
         if(root == null) return 0;
         int left = PathHeight(root.left);
         int right = PathHeight(root.right);
-        if(CheckIfBalanced(left, right)) return -1;
+        if(CheckIfNotBalanced(left, right)) return -1;
         return Math.Max(left, right) + 1;
     }
     
-    private bool CheckIfBalanced(int left, int right){
+    private bool CheckIfNotBalanced(int left, int right){
         if(left == -1 || right == -1 || Math.Abs(left - right) > 1) return true;
         return false;
     }

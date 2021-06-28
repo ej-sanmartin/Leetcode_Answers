@@ -1,4 +1,38 @@
 /*
+    UPDATED 2021 Solution
+
+    Given an integer numRows, return the first numRows of Pascal's triangle.
+
+    In Pascal's triangle, each number is the sum of the two numbers directly above it as shown:
+
+    T - O(n^2), since we have to loop through every row and add every element into each row
+    S - O(n^2), we are creating and storing each number in pascalsTriangle
+*/
+public class Solution {
+    public IList<IList<int>> Generate(int numRows) {
+        var pascalsTriangle = new List<IList<int>>();
+        pascalsTriangle.Add(new List<int>{ 1 });
+        if(numRows == 1) return pascalsTriangle;
+        int currentRowIndex, sum;
+        
+        for(int i = 1; i < numRows; i++){
+            List<int> row = new List<int>(new int[i + 1]);
+            row[0] = 1;
+            row[row.Count - 1] = 1;
+            currentRowIndex = 1;
+            for(int prevIndex = 1; prevIndex < pascalsTriangle[i - 1].Count; prevIndex++){
+                sum = pascalsTriangle[i - 1][prevIndex] + pascalsTriangle[i - 1][prevIndex - 1];
+                row[currentRowIndex++] = sum;
+            }
+            
+            pascalsTriangle.Add(row);
+        }
+            
+        return pascalsTriangle;
+    }
+}
+
+/*
   Given a non-negative integer numRows, generate the first numRows of Pascal's triangle.
   In Pascal's triangle, each number is the sum of the two numbers directly above it.
 */

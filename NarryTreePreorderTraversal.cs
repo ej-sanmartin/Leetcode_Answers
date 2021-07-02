@@ -2,8 +2,13 @@
     Given the root of an n-ary tree, return the preorder traversal of its nodes' 
     values.
 
-    T - O(n), n is the amount of nodes in tree. We must traverse through them all to               create the list with the tree nodes in preorder
-    S - O(h), where h is the height of the tree and the amount of recursive call                   stacks we will have
+    T - O(n), n is the amount of nodes in tree. We must traverse through them all to
+              create the list with the tree nodes in preorder
+    S - O(n), where h is the height of the tree and the amount of recursive call     
+              stacks we will have.
+              If counting the list we are creating in space analysis, we are         
+              creating a list that is of space n, where n is the amount of nodes in 
+              the tree
 */
 
 /*

@@ -14,8 +14,9 @@
     T - O(n*m(n + m)) -> O(n^3), nested for loop adds a lot of time inefficiency
               and to run a DFS within that does make the algorithm that much more 
               slower
-    S - O(1), since we are not creating much space besides the count for the 
-              perimeter
+    S - O(h), recursive call stack create h space, where h is the height of the
+              implicit call stack tree. H is thus the size of the longest path
+              dfs can take
 */
 public class Solution {
     private int perimeter;

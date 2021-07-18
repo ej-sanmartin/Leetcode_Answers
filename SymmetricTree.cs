@@ -1,3 +1,23 @@
+/*  2021 UPDATED ANSWER  */
+/*
+    T - O(n), where n is the number of nodes in the trees. We must process all of them
+    S - O(h), where h is the size of the recursive call stack. Depends on if tree is 
+              balanced or not
+*/
+public class Solution {
+    public bool IsSymmetric(TreeNode root) {
+        return IsSymmetricHelper(root.left, root.right);
+    }
+    
+    private bool IsSymmetricHelper(TreeNode left, TreeNode right){
+        if(left == null && right == null) return true;
+        if(left == null || right == null) return false;
+        bool leftMirror = IsSymmetricHelper(left.left, right.right);
+        bool rightMirror = IsSymmetricHelper(left.right, right.left);
+        return (left.val == right.val) && leftMirror && rightMirror;
+    }
+}
+
 /*
   Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
   

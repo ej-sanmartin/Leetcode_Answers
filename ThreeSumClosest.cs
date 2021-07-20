@@ -21,8 +21,8 @@ public class Solution {
                 if(Math.Abs(target - currentSum) < Math.Abs(difference)){
                     difference = target - currentSum;
                 }
-                if(currentSum > target) left++;
-                if(currentSum < target) right--;
+                if(currentSum < target) left++;
+                else right--;
             }
         }
         

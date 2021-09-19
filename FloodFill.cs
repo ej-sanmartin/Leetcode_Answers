@@ -43,3 +43,34 @@ public class Solution {
         return false;
     }
 }
+
+// another solution
+/*
+    T - O(n), n being number of cells
+    S - O(n), worst case, recursive stack holds all cells
+*/
+public class Solution {
+    public int[][] FloodFill(int[][] image, int sr, int sc, int newColor) {
+        DFS(image, sr, sc, image[sr][sc], newColor);
+        return image;
+    }
+    
+    private void DFS(int[][] image, int row, int col, int lastColor, int newColor){
+        if(IsNotValid(image, row, col, lastColor, newColor)){
+            return;
+        }
+        int currentColor = image[row][col];
+        image[row][col] = newColor;
+        DFS(image, row + 1, col, currentColor, newColor);
+        DFS(image, row - 1, col, currentColor, newColor);
+        DFS(image, row, col + 1, currentColor, newColor);
+        DFS(image, row, col - 1, currentColor, newColor);
+    }
+    
+    private bool IsNotValid(int[][] image, int row, int col, int lastColor, int newColor){
+        if(row < 0 || col < 0 || row >= image.Length || col >= image[row].Length || image[row][col] == newColor || image[row][col] != lastColor){
+            return true;
+        }
+        return false;
+    }
+}

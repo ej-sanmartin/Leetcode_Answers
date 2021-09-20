@@ -13,6 +13,7 @@
  * }
  */
 public class Solution {
+    // iterative
     public ListNode MergeTwoLists(ListNode l1, ListNode l2) {
         ListNode answer = new ListNode(0);  
         ListNode tail = answer; 
@@ -40,5 +41,22 @@ public class Solution {
         }
         
         return answer.next; 
+    }
+ 
+    // recursive
+     public ListNode MergeTwoLists(ListNode l1, ListNode l2) {
+        if(l1 == null) return l2;
+        if(l2 == null) return l1;
+        
+        ListNode newNode = new ListNode(0);
+        
+        if(l1.val >= l2.val){
+            newNode.next = l2;
+            newNode.next.next = MergeTwoLists(l1, newNode.next.next);
+        } else {
+            newNode.next = l1;
+            newNode.next.next = MergeTwoLists(newNode.next.next, l2);
+        }
+        return newNode.next;
     }
 }

@@ -29,3 +29,33 @@ public class Solution {
         return answer;
     }
 }
+
+// More verbose
+public class Solution {
+    public int[] PlusOne(int[] digits) {
+        if (digits.Length == 0 || digits == null) {
+            return new int[]{1};
+        }
+        
+        int n = digits.Length;
+        int carry = -1;
+        
+        for (int i = digits.Length - 1; i >= 0; i--) {
+            if (carry == -1 || carry == 1) {
+                int temp = digits[i] + 1;
+                carry = temp / 10;
+                digits[i] = temp % 10;
+            } else {
+                break;
+            }
+        }
+        
+        if (carry == 1) {
+            int[] output = new int[n + 1];
+            output[0] = 1;
+            return output;
+        }
+        
+        return digits;
+    }
+}

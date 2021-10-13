@@ -40,3 +40,26 @@ public class Solution {
         return null;
     }
 }
+
+
+// A year later, came up with a better answer
+// T - O(n), S - O(n)
+public class Solution {
+    public int[] TwoSum(int[] nums, int target) {
+        if (nums.Length == 0 || nums == null) {
+            return new int[0];
+        }
+        
+        Dictionary<int, int> table = new Dictionary<int, int>();
+        
+        for (int i = 0; i < nums.Length; i++) {
+            int remainder = target - nums[i];
+            if (table.ContainsKey(remainder)) {
+                return new int[]{i, table[remainder]};
+            }
+            table[nums[i]] = i;
+        }
+        
+        return new int[0];
+    }
+}
